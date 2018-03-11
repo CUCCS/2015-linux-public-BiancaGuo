@@ -21,6 +21,10 @@
 
 ![](https://i.imgur.com/8YOrjdS.jpg)
 
+（更正：Host-only 的IP设置过于随意了 1.1.1.2 是 APNIC.NET 的互联网地址，不是私有地址；）
+
+* 现Host-only的IP重设为 192.168.227.3，putty需重新配置，但配置步骤相同
+
 
 ### 2、实验过程
 
@@ -29,10 +33,20 @@
 免密配置方法：
 
 *  putty生成私钥
-*  将私钥存入虚拟机
+*  将私钥（更正：公钥）存入虚拟机
+
+![](https://i.imgur.com/kULx1Pb.jpg)
+
 *  将登录用户名存储到putty上
+
+![](https://i.imgur.com/eDzyElX.jpg)
+
 *  将私钥导入putty
-*  don't forget save！
+
+![](https://i.imgur.com/9kK29cv.jpg)
+
+
+*  don't forget to save！
 
 ![](https://i.imgur.com/3jstiDl.jpg)
 
@@ -84,7 +98,7 @@
 
 ![](https://i.imgur.com/e8ty7UT.jpg)
 
-（6）修改isolinux/isolinux.cfg，增加内容timeout 10，使开机时自动进入安装界面
+（6）修改isolinux/isolinux.cfg，增加内容timeout 10（更正：完全可以改为0，不等待这10s），使开机时自动进入安装界面
 
 ![](https://i.imgur.com/0st4UHo.jpg)
 
@@ -92,7 +106,7 @@
 
 ![](https://i.imgur.com/RxWBf4B.jpg)
 
-* 注意：生成MD5文件需要修改文件权限或提升至管理员权限
+* 注意：生成MD5文件需要修改文件权限或提升至管理员权限（更正：chmod 777 * 有毒，用root -s提权即可）
 
 （8）封闭改动后的目录到custom.iso
 
@@ -111,7 +125,7 @@
 ### 1、Virtualbox安装完Ubuntu之后新添加的网卡如何实现系统开机自动启用和自动获取IP
 
 
-参考资料：https://jingyan.baidu.com/article/f25ef25414e8ea482d1b8265.html
+参考资料：https://jingyan.baidu.com/article/f25ef25414e8ea482d1b8265.html（有毒）
 
 * 注意默认网卡为enp0s3
 
@@ -127,7 +141,7 @@
 * 上传：put [文件名]
 * 下载：get [文件名]
 
-* **注意：不指定目录的情况下，上传到虚拟机根目录，下载到putty根目录**
+* **注意：不指定目录的情况下，上传到虚拟机根目录（更正：上传到当前用户家目录），下载到putty根目录**
 
 （2）安装virtualbox增强功能使用共享文件夹
 
