@@ -135,6 +135,10 @@
 
 	查询一个内置默认快捷键  :help+快捷键名称
 	不同的分屏窗口中移动光标 Ctrl+W  （演示视频见：https://asciinema.org/a/kTGfplrDLQx6WhO1lwoXGt9lz）
+
+#### （15）putty中vim与主机的复制粘贴
+
+	按住shift再加命令
 	
 
 	
