@@ -22,13 +22,28 @@
 
 **设置当前时区未成功**
 
+错误提示如下：
+
+![](https://i.imgur.com/yNHV6NW.jpg)
+
 ### 2、 Systemd 入门教程：实战篇
 
 * 参考资料：http://www.ruanyifeng.com/blog/2016/03/systemd-tutorial-part-two.html
 
 * 演示：
 * https://asciinema.org/a/NjeTd18BQ2hUA1JfSHA4KhjMH
-* https://asciinema.org/a/DYPpdqjf9ueBFheNT4W4fFfr1（fail？）
+* https://asciinema.org/a/DYPpdqjf9ueBFheNT4W4fFfr1
+
+**更改sshd.service中的[Service]内选项，未成功，sudo systemctl start sshd 后无任何反应**
+
+    [Service]
+	ExecStart=/bin/echo execstart1
+	ExecStart=
+	ExecStart=/bin/echo execstart2
+	ExecStartPost=/bin/echo post1
+	ExecStartPost=/bin/echo post2
+
+
 * https://asciinema.org/a/DGaA6qVV4TnDwUZai69OojPPj
 
 
