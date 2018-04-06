@@ -32,7 +32,7 @@ function compress_quality
 	filelist=`ls $2`
 	for fileName in $filelist
 	do 
-    case $(file $fileName) in
+    case $(file $2/$fileName) in
         *jpeg*)
                 $(convert $2/$fileName -quality $1 "$2/compress_quality_"$fileName)
                 ;;
@@ -50,7 +50,7 @@ function compress_resolution
 	filelist=`ls $2`
 	for fileName in $filelist
 	do 
-    case $(file $fileName) in
+    case $(file $2/$fileName) in
         *jpeg*)
                 $(convert $2/$fileName -resize $1%x$1% "$2/compress_resolution_"$fileName)
                 ;;
@@ -72,7 +72,7 @@ function add_watermark
 	filelist=`ls $2`
 	for fileName in $filelist
 	do 
-    case $(file $fileName) in
+    case $(file $2/$fileName) in
         *jpeg*)
                 $(convert -size 140x80 xc:none -fill grey \
 			-gravity NorthWest -draw "text 10,10 $1" \
@@ -137,7 +137,7 @@ function change_format
     filelist=`ls $1`
 	for fileName in $filelist
 	do 
-    case $(file $fileName) in
+    case $(file $1/$fileName) in
         *svg*)
 		FILE=$fileName
                 $(convert $1/$fileName $1/change_format_${FILE##*/}.jpg)
