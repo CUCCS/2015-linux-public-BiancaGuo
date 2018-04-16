@@ -167,8 +167,8 @@
 
 2、nginx配置文件中可以进行同一IP不同端口对应不同服务的设置
 
-* [/etc/nginx/sites-available/default 文件](/file/default)
+* [/etc/nginx/sites-available/default 文件](/实验五/file/default)
 
 3、wordpress相关配置
 
-* [/opt/verynginx/verynginx/configs/config.json](/file/config.json)
+* [/opt/verynginx/verynginx/configs/config.json](/实验五/file/config.json)
