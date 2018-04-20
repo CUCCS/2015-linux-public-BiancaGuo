@@ -5,7 +5,7 @@
 ## 一、实验环境
 
 * ubuntu 16.04 server 
-
+* 使用多台虚拟机，故实验过程中IP存在变化
 
 ## 二、实验过程
 
@@ -18,8 +18,6 @@
 	* 配置文件：/etc/proftpd/proftpd.conf
 
 * 任务要求：
-
-	* 使用FTPS服务代替FTP服务
 
 	* 配置一个提供匿名访问的FTP服务器，匿名访问者可以访问1个目录且仅拥有该目录及其所有子目录的只读访问权限；
 
@@ -89,6 +87,7 @@
 		
 		* home/ 为只读文件目录
 		* var/nfs/general 为读写文件目录
+		
 		![](https://i.imgur.com/5KZVJad.jpg)
 
 	* mount 添加： sudo mount 192.168.227.4:/home /nfs/home 和  sudo mount 192.168.227.4:/var/nfs/general /nfs/general
@@ -129,7 +128,7 @@
 		* 修改配置文件：/etc/default/isc-dhcp-server
 		* 修改配置文件：/etc/dhcp/dhcpd.conf
 		
-		* 注意：要先使用  ifconfig enp0s8 10.0.11.1（自己指定） netmask 255.255.255.0 为指定网卡分配IP
+		* 注意：要先使用  ifconfig enp0s8 10.0.11.1（自己指定） netmask 255.255.255.0 为指定网卡分配IP或直接设置为静态IP（修改 /etc/network/interfaces）
 
 		![](https://i.imgur.com/ULW1sVx.jpg)
 		![](https://i.imgur.com/hhVjcsS.jpg)
@@ -207,7 +206,6 @@
 
 		* 修改/etc/resolvconf/resolv.conf.d/head 文件
 
-
 			![](https://i.imgur.com/JFBeJeN.jpg)
 
 		* sudo resolvconf -u
@@ -220,22 +218,14 @@
 
 ### 1、前期准备：
 
-* 目标系统：192.168.227.11（ubuntu16.04 server）
-* 脚本执行系统：192.168.227.12（ubuntu16.04 server）
-
-
+* 目标系统：192.168.227.6（ubuntu16.04 server）
+* 脚本执行系统：192.168.227.13（ubuntu16.04 server）
+* 安装expect处理部分人机交互
 * 自动安装与自动配置过程的启动脚本要求在本地执行
-
 
 	* 提示：配置远程目标主机的SSH免密root登录，安装脚本、配置文件可以从工作主机（执行启动脚本所在的主机）上通过scp或rsync方式拷贝或同步到远程目标主机，然后再借助SSH的远程命令执行功能实现远程控制安装和配置
 
-
-
-* 脚本在执行过程中，如果需要在目标主机上创建目录、创建临时文件、执行网络下载等操作需要判断执行是否成功，并进行必要的异常处理（例如：apt-get update失败，则退出脚本执行，并将友好错误信息打印在控制台上。临时目录不存在，则自动创建该临时目录）
-* 所有服务的配置文件、临时目录需设置正确的目录和文件归属和权限位，禁止使用777这种偷懒的权限位设置
-* 减少不必要的安装过程中的人机交互输入，尽可能全部通过脚本的方式完成选项设置和交互式问题输入等
-
-
+* 进行必要的异常处理
 * 目标环境相关参数应使用独立的配置文件或配置脚本（在主调脚本中引用配置脚本）
 	* 目标服务器IP
 	* 目标服务器SSH服务的端口
@@ -245,15 +235,34 @@
 
 ### 2、实验过程
 
-* 配置root免密登录
+(1) 本地配置要求
+
+* 本地服务器开启免密码sudo
+* 赋予脚本执行权限
+
+(2) 相关脚本说明
+
+* 启动脚本
+
+	* main.sh
 	
-	* 在目标系统中设置root用户初始密码
-	* 修改目标系统 /etc/ssh/sshd_config文件，使其允许ssh root登录，参考：https://www.cnblogs.com/yixius/articles/6971054.html
-	* 在本地系统中执行 
-		* `mkdir /root/.ssh` 
-		* `ssh-keygen -t rsa` 生成密钥
-		* 重启sshd服务
-	* 在本地系统中执行： root_login.sh
+* 配置root免密登录
 
+	* root_login.sh
 
-* 
+* 目标环境相关参数
+
+	* global_var.sh
+
+* 软件安装与配置文件备份
+
+	* apt_install.sh
+
+* 配置文件替换
+
+	* config_change.sh
+
+* 其他配置
+
+	* basic_allocation.sh
+
