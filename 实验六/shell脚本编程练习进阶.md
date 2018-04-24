@@ -64,7 +64,7 @@
 					#!/bin/bash
 					echo -e "\nPlease enter a name for your SSL Certificate and Key pairs:"
 					read name
-					openssl req -x509 -newkey rsa:1024 \
+					openssl req -x509 -newkey rsa:2048 \
 					-keyout /etc/ssl/private/$name.key -out /etc/ssl/certs/$name.crt \
 					-nodes -days 365
 					chmod 0600 /etc/ssl/private/$name.key
@@ -85,8 +85,8 @@
 	* NFS client：192.168.227.6
 	* 创建文件夹后修改/etc/exports文件（bug解决参考：https://blog.csdn.net/zhongzai2010/article/details/38175637）：
 		
-		* home/ 为只读文件目录
-		* var/nfs/general 为读写文件目录
+		* /home/ 为只读文件目录
+		* /var/nfs/general 为读写文件目录
 		
 		![](https://i.imgur.com/5KZVJad.jpg)
 
@@ -219,9 +219,9 @@
 ### 1、前期准备：
 
 * 目标系统：192.168.227.6（ubuntu16.04 server）
-* 脚本执行系统：192.168.227.13（ubuntu16.04 server）
+* 工作主机：192.168.227.13（ubuntu16.04 server）
 * 安装expect处理部分人机交互
-* 自动安装与自动配置过程的启动脚本要求在本地执行
+* 自动安装与:1024自动配置过程的启动脚本要求在本地执行
 
 	* 提示：配置远程目标主机的SSH免密root登录，安装脚本、配置文件可以从工作主机（执行启动脚本所在的主机）上通过scp或rsync方式拷贝或同步到远程目标主机，然后再借助SSH的远程命令执行功能实现远程控制安装和配置
 
@@ -237,7 +237,7 @@
 
 (1) 本地配置要求
 
-* 本地服务器开启免密码sudo
+* 工作主机开启免密码sudo
 * 赋予脚本执行权限
 
 (2) 相关脚本说明

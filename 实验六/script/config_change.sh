@@ -20,5 +20,5 @@ cp -rf config/interfaces  /etc/network/interfaces
 cp -rf config/isc-dhcp-server /etc/default/isc-dhcp-server
 cp -rf config/dhcpd.conf /etc/dhcp/dhcpd.conf
 cp -rf config/named.conf.local /etc/bind/named.conf.local
-mkdir /etc/bind/zones
+[[ -d '/etc/bind/zones' ]] || {  mkdir '/etc/bind/zones'; }
 cp -rf config/db.cuc.edu.cn /etc/bind/zones/db.cuc.edu.cn

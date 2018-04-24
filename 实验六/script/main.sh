@@ -3,7 +3,7 @@
 source global_var.sh
 
 KNOWN_HOSTS="/root/.ssh/known_hosts"
-if [ -d "$KNOWN_HOSTS" ] ; then
+if [ -f "$KNOWN_HOSTS" ] ; then
   rm $KNOWN_HOSTS
 fi
 
@@ -21,9 +21,7 @@ scp global_var.sh $AIM_USER_ROOT@$HOST:~
 
 #执行apt软件安装与配置文件备份
 ssh $AIM_USER_ROOT@$HOST 'bash -s' < apt_install.sh
-
 #配置文件替换
 ssh $AIM_USER_ROOT@$HOST 'bash -s' < config_change.sh
-
 #相关基础命令行配置
 ssh $AIM_USER_ROOT@$HOST 'bash -s' < basic_allocation.sh

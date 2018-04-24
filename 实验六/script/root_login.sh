@@ -44,6 +44,7 @@ sleep 1
 #对ssh配置文件进行替换
 send "mkdir config_bianca/\r"
 send "git clone https://github.com/CUCCS/2015-linux-public-BiancaGuo.git -b 实验六 config_bianca/\r"
+send "cp /etc/ssh/sshd_config /etc/ssh/sshd_config.bak\r"
 send "sudo cp config_bianca/实验六/config/sshd_config /etc/ssh/sshd_config\r"
 expect "password" 
 send "$AIM_USER_GENERAL_PASS\r"

@@ -2,26 +2,35 @@
 
 
 #login
-HOST=192.168.227.6
+#HOST=192.168.227.6
 PORT=22
-INSTALL_USER=cuc
-INSTALL_PASS=CUC
-AIM_USER_GENERAL=cuc
-AIM_USER_GENERAL_PASS=CUC
-RPSW=123
-#echo -n "请输入当前系统用户名："
-#read INSTALL_USER
-#echo -n "请输入当前系统密码："
-#read INSTALL_PASS
-#echo -n "请输入目标系统普通用户名："
-#read AIM_USER_GENERAL
-#echo -n "请输入目标系统普通用户密码："
-#read AIM_USER_GENERAL_PASS
-#目标系统中root用户初始密码
-#echo -n "请为目标系统root用户设置密码（若已设置过，请输入原有密码）："
-#read RPSW
 
-# 部分操作系统默认配置的 sshd 是禁止 root 用户远程登录的
+#INSTALL_USER=cuc
+#INSTALL_PASS=CUC
+#AIM_USER_GENERAL=cuc
+#AIM_USER_GENERAL_PASS=CUC
+#RPSW=123
+
+echo -n "请输入目标系统IP地址："
+read HOST
+
+echo -n "请输入当前系统用户名："
+read INSTALL_USER
+echo -n "请输入当前系统密码："
+read INSTALL_PASS
+
+echo -n "请输入目标系统普通用户名："
+read AIM_USER_GENERAL
+echo -n "请输入目标系统普通用户密码："
+read AIM_USER_GENERAL_PASS
+
+#目标系统中root用户初始密码
+echo -n "请为目标系统root用户设置密码（若已设置过，请输入原有密码）："
+read RPSW
+
+# 禁止 root 用户使用口令远程登录
+
+
 AIM_USER_ROOT="root"
 
 # FTP:proftpd
