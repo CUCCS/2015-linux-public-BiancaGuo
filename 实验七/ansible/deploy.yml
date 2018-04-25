@@ -3,9 +3,9 @@
   become: true
   remote_user: root
   roles:
-          #- proftpd
+          # - proftpd
   - nfs
   - samba
   - dhcp
   - dns
-
+  - proftpd

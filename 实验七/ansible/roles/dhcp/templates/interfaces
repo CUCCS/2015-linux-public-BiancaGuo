@@ -17,6 +17,5 @@ iface {{NAT_INTER}} inet dhcp
 auto {{INTERNAL_INTER}}
 iface {{INTERNAL_INTER}} inet static
 address {{INTERNAL_IP}}
-netmask 255.255.255.0
-gateway {{INTERNAL_GATEWAY}}
+
 

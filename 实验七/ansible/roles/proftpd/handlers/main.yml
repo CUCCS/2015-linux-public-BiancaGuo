@@ -1,3 +1,4 @@
 ---
-- name: proftpd restart
-  servce: name=proftpd enabled=yes state=restarted
+- name: proftpd restart 
+  service: name=proftpd state=restarted
+
