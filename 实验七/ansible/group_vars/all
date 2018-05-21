@@ -18,15 +18,14 @@ PRO_GROUP_NAME: "virtualusers"
 
 
 # samba
-# samba user
-#SAMBA_USERNAME:"smbuser"
-#SAMBA_PASSWORD:"smbpass"
-#SAMBA_GROUP:"smbgroup"
-# directories
-#SAMBA_GUEST_DIR:"/home/samba/guest"
-#SAMBA_DEMO_DIR:"/home/samba/demo"
-#SAMBA_GUEST_LIMIT:"2775"
-#SAMBA_DEMO_LIMIT:"2770"
+
+SAMBA_USERNAME:"smbuser"
+SAMBA_PASSWORD:"smbpass"
+SAMBA_GROUP:"smbgroup"
+SAMBA_GUEST_DIR:"/home/samba/guest"
+SAMBA_DEMO_DIR:"/home/samba/demo"
+SAMBA_GUEST_LIMIT:"2775"
+SAMBA_DEMO_LIMIT:"2770"
 
 # interfaces
 HOST_ONLY_INTER: "enp0s3"
