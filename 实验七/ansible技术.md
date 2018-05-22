@@ -26,15 +26,15 @@
 * install.sh
 
 
- ![3](HW7_img/3.jpg)
+ ![3](HW7_img/3.JPG)
 
 ### 三、实验结果
 
- ![1](HW7_img/1.jpg)
+ ![1](HW7_img/1.JPG)
 
- ![2](HW7_img/2.jpg)
+ ![2](HW7_img/2.JPG)
 
- ![5](HW7_img/5.jpg)
+ ![5](HW7_img/5.JPG)
 
  
 
